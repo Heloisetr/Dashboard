@@ -17,3 +17,17 @@
 .App-link {
   color: #09d3ac;
 }
+
+.Header_auth
+{
+    padding-top: -80px;
+    background-color: #DFF2FF;
+    height: 300px;
+    width: 100%;
+    text-align: center;
+}
+
+.Header_auth h3
+{
+  margin: 80px 0px 0px 0;
+}

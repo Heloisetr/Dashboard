@@ -1,33 +1,20 @@
 import React, {Component} from 'react';
-import logo from '../logo.svg';
+//import logo from '../logo.svg';
 import './Auth.css';
+import {Header} from './Header'
+import {BodyLog} from './Body'
+import { Footer } from './Footer';
 //import {Link, Router, Switch, Route} from 'react-router-dom'
-import SignUp from './SignUp'
-
-const Body = (props) =>  (
-  <p>
-    Edit <code>src/App.js</code>{props.text}.
-  </p>
-);
-
-class Header extends Component {
-    render() {
-      return (
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" width="50" height="50" />
-          <p className="App-title">{this.props.title}</p>
-        </header>
-      );
-    }
-}
+//import SignUp from './SignUp'
 
 
-export default class AppT extends Component {
+export default class AppLogIn extends Component {
   render() {
     return (
       <div className="App">
-        <Header title="je test le reactjs"/>
-        <Body text=" nul a chier"/>
+        <Header/>
+        <BodyLog/>
+        <Footer/>
       </div>
     );
   }

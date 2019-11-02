@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import AppT from './Authentification/LoginIn';
+import AppLogIn from './Authentification/LogIn';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<AppT />, document.getElementById('root'));
+ReactDOM.render(<AppLogIn />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

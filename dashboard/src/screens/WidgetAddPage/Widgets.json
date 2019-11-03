@@ -1,0 +1,14 @@
+{
+    "data": [{
+        "name": "météo",
+        "connection": "none",
+        "params": [{
+            "name": "city",
+            "type": "string"
+        }]
+    },
+    {
+        "name": "google calendar",
+        "connection": "google"
+    }]
+}

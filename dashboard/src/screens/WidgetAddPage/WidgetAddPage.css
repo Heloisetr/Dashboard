@@ -1,0 +1,17 @@
+.Add-background {
+    background-color: #DFF2FF;
+    display: inline-block;
+    width: 100%;
+}
+
+.Add-container {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #ffffff;
+    min-height: 379px;
+}
+
+body {
+    background-color: #DFF2FF;
+}

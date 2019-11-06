@@ -1,0 +1,25 @@
+{
+    "data": [{
+        "name": "Météo",
+        "image_key": "meteo",
+        "connection": "none",
+        "params": [{
+            "name": "city",
+            "type": "string"
+        }],
+        "badge": "New"
+    },
+    {
+        "name": "Google Calendar",
+        "image_key": "calendar",
+        "connection": "google",
+        "params": [{}]
+    },
+    {
+        "name": "Google Calendar",
+        "image_key": "calendar",
+        "connection": "google",
+        "params": [{}],
+        "badge": "Top rated"
+    }]
+}

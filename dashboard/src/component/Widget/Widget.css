@@ -1,0 +1,46 @@
+.Widget-container {
+    background-color: #f1f1f1;
+    float: left;
+    width: 25%;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.Widget-image {
+    max-width: 30%;
+    text-align: center;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.Widget-name {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    text-align: center;
+}
+
+.Widget-button-container {
+    width: 80%;
+    text-align: center;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.Widget-button {
+    float: left;
+    margin-bottom: 20px;
+}
+
+.Widget-add {
+    float: right;
+}

@@ -7,6 +7,11 @@ router.post('/register', register);
 
 module.exports = router;
 
+/**
+ * Function logIn qui permet de checker si l'email et le mot de passe est bien dans la base de donnée
+ * @param {*} req : parameter which contains the json data
+ * @param {*} res : 
+ */
 function logIn(req, res) {
     console.log(`req.body: ${JSON.stringify(req.body)}`);
 

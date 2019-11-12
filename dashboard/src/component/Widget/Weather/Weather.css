@@ -1,0 +1,25 @@
+.Weather_container
+{
+    border-radius: 10px;
+    background-color: #f2f2f2;
+    width: 300px;
+    height: 250px;
+}
+
+.Weather_container h1
+{
+    text-align: center;
+    padding-top: 10px;
+}
+
+.City
+{
+    font-size: 25px;
+    padding-left: 20px
+}
+
+.Temp
+{
+    font-size: 20px;
+    margin-left: 120px;
+}

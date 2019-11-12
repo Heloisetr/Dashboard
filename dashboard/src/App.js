@@ -9,7 +9,6 @@ import HomePage from './screens/HomePage/HomePage';
 import ProfilePage from './screens/ProfilePage/ProfilePage';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Test from './weatherTest';
 
 const Routing = withRouter(function({history}) {
 
@@ -22,8 +21,7 @@ const Routing = withRouter(function({history}) {
       <Route exact path="/widget-handling" component={WidgetAddPage} />
       <Route exact path="/HomePage" component={HomePage} />
       <Route exact path="/ProfilePage" component={ProfilePage} />
-      <Route exact path="/WeatherTest" component={Test} />
-     </React.Fragment>
+    </React.Fragment>
   );
 });
 

@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const fs = require('fs');
 
 const app = express();
 
@@ -89,13 +90,37 @@ app.post('/', function(req, res){
         password: req.body.new_user.password
     }).save(function(err, doc){
         if (err) res.json(err);
-        Test.find(function (err, tes) {
+        Test.find(function (err, res) {
             if (err) return console.error(err);
-            console.log(tes);
+            console.log(res);
         })
     })
 })
 
+app.get('/', function(req, res){
+    Test.find({ email: req.query.email_s }, function (err, tes) {
+        if (err) return console.error(err);
+        if (tes == []) {
+            res.send("This email doesn't exist !")
+        } else {
+            if(tes[0].password == req.query.password_s) {
+                if (fs.existsSync('../../userInfos.json')) {
+                    fs.unlink('../../userInfos.json', (err) => {
+                        if (err) {
+                            console.error(err)
+                            return
+                        }
+                    })
+                }
+                fs.writeFile('../../userInfos.json', JSON.stringify(tes, null, 2), (err) => {
+                    if (err) throw err;
+                })
+                res.send(tes);
+            } else {
+                res.send("Wrong password")
+            }
+        }
+    })
+})
 
 module.exports = server;
-

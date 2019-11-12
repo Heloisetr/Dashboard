@@ -12,21 +12,27 @@ export default withRouter(function AuthLogInPage({history})
   const [ email, setEmail ] = useState("");
   const [ password, setPassword ] = useState("");
 
-  async function setLogin(new_user) {
-    axios.get('http://localhost:5000/', {new_user})
-    .then(resp => {
-        console.log ("OK", resp);
+  function setLogin(user) {
+
+    axios.get('http://localhost:5000/', {
+      params:{
+        email_s: email,
+        password_s: password
+      }
+    }).then(resp => {
+      let data = JSON.stringify(resp.data[0], null, 2);
+      console.log(resp);
     })
   }
 
   function submitHandler(event)
   {
+    event.preventDefault();
       const user = {
           email: email,
           password: password
       };
       let res = setLogin(user);
-      console.log(res);
   }
 
   return (

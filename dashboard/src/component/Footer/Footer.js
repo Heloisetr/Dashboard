@@ -1,11 +1,12 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './Footer.css';
 
-export class Footer extends Component {
-    render() {
-      return (
-        <div className="App_Footer"></div>
+export default function Footer()
+{
+  return (
+    <div className="App_Footer">
+      <p>Created by Louis BEUGNON and Héloïse TRONCHE</p>
+    </div>
 
-      );
-    }
-  }
+  );
+}

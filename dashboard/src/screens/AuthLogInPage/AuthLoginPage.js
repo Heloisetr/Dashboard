@@ -1,7 +1,7 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
 import {HeaderAuth} from '../../component/Header/Header';
-import { Footer } from '../../component/Footer/Footer';
+import Footer from '../../component/Footer/Footer';
 import './AuthLogInPage.css';
 
 
@@ -15,7 +15,7 @@ export default withRouter(function AuthLogInPage({history}) {
                 <h3>Log In to your account</h3>
                 <input type="email" name="email" placeholder="Email" required/><br/>
                 <input type="password" name="pwd" placeholder="Password" required/><br/>
-                <input type="submit" value="Log In" name="submit"/>   
+                <button onClick={() => history.push('/HomePage')}>LogIN</button>
                 <p>Need an account ? <button onClick={() => history.push('/AuthSignUpPage')}>Sign up</button></p>
             </form>
         </div>
@@ -24,3 +24,7 @@ export default withRouter(function AuthLogInPage({history}) {
       </React.Fragment>
     );
 })
+
+/*
+<input type="submit" value="Log In" name="submit"/>   
+                */

@@ -1,0 +1,47 @@
+.ProfilePage
+{
+    /*margin-left: 30%;*/
+    display: inline-block;
+    width: 100%;
+}
+
+.ProfilePage-title 
+{
+    width: 35%;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+.info_container
+{
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+}
+
+.name_info
+{
+    background-image: url('../../user.svg');
+    background-size: 60px;
+    background-repeat: no-repeat;
+    background-position-x: 10px;
+    background-position-y: 10px;
+    padding: 10px 10px 10px 100px;
+    width: 400px;
+    height: 150px;
+}
+
+.email_info
+{
+    
+    background-image: url('../../envelope.svg');
+    background-size: 60px;
+    background-repeat: no-repeat;
+    background-position-x: 10px;
+    padding: 10px 10px 10px 100px;
+    width: 400px;
+    height: 100px;
+}

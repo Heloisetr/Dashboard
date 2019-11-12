@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {HeaderAuth} from '../../component/Header/Header';
-import { Footer } from '../../component/Footer/Footer';
+import Footer from '../../component/Footer/Footer'
 import {withRouter} from 'react-router-dom';
 import './AuthSignUpPage.css';
 

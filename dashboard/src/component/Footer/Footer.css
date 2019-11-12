@@ -1,7 +1,15 @@
+
 .App_Footer
 {
-    margin-top: 200px;
-    height: 200px;
+    position: absolute;
+    bottom: 0;
+    height: 100px;
     width: 100%;
     background-color: #9E9E9E;
+}
+
+.App_Footer p
+{
+    padding-top: 40px;
+    text-align: center;
 }

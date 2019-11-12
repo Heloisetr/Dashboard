@@ -30,6 +30,7 @@ export default withRouter(function AuthSignUpPage({history})
             password: password
         };
         let res = setRegister(new_user);
+        console.log(res);
     }
 
     return (

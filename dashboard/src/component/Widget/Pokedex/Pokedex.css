@@ -1,0 +1,27 @@
+.Pokedex_container
+{
+    border-radius: 10px;
+    background-color: #f2f2f2;
+    width: 300px;
+    height: 250px;
+}
+
+.Weather_container h1
+{
+    text-align: center;
+    padding-top: 10px;
+}
+
+.image
+{
+    width: 50%;
+    float: left;
+    text-align: center;
+}
+
+.caract
+{
+    width: 50%;
+    float: left;
+    padding-top: 10px;
+}

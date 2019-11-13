@@ -24,10 +24,19 @@ export default function Pokedex()
 
     return (
         <div className="Pokedex_container">
-            <p>the height is : {height}</p>
-            <p>the weight is : {weight}</p>
-            <p>the type is : {type}</p>
-            <img src={image} alt="test"></img>
+            <h1>
+                Pokedex
+            </h1>
+            <hr></hr>
+            <div className="image">
+                <img src={image} alt={name}></img>
+                <p><strong>{name}</strong></p>
+            </div>
+            <div className="caract">
+                <p>Height : <strong>{height}</strong> feet</p>
+                <p>Weight : <strong>{weight}</strong> pounds</p>
+                <p>Type : <strong>{type}</strong></p>
+            </div>
         </div>
     )
 }

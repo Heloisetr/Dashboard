@@ -18,6 +18,7 @@ export default withRouter(function AuthSignUpPage({history})
         axios.post('http://localhost:5000/', {new_user})
         .then(resp => {
             console.log ("OK", resp);
+            history.push('HomePage');
         })
     }
 

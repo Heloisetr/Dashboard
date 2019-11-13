@@ -1,25 +1,20 @@
 {
     "data": [{
-        "name": "Météo",
-        "image_key": "meteo",
+        "name": "CityWeather",
         "connection": "none",
         "params": [{
             "name": "city",
             "type": "string"
         }],
-        "badge": "New"
-    },
-    {
-        "name": "Google Calendar",
-        "image_key": "calendar",
-        "connection": "google",
-        "params": [{}]
-    },
-    {
-        "name": "Google Calendar",
-        "image_key": "calendar",
-        "connection": "google",
-        "params": [{}],
         "badge": "Top rated"
+    },
+    {
+        "name": "PokemonInfos",
+        "connection": "none",
+        "params": [{
+            "name": "pokemon name",
+            "type": "string"
+        }],
+        "badge": "New"
     }]
 }

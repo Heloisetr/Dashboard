@@ -19,6 +19,12 @@ mongoose.connect('mongodb://localhost:27017/mydb', {
     process.exit;
 })
 
+const server = app.listen(port, () => {
+    console.log(`Listening on port ${port}`);
+}).on('error', function(err) {
+    console.log(err);
+});
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
@@ -26,11 +32,12 @@ app.use(bodyParser.urlencoded({
 
 app.use(cors());
 
-const server = app.listen(port, () => {
-    console.log(`Listening on port ${port}`);
-}).on('error', function(err) {
-    console.log(err);
-});
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+
+app.use('/users', require('../../routes/usersConstroller'));
+
+
 
 
 var TestSchema = new mongoose.Schema({
@@ -40,47 +47,68 @@ var TestSchema = new mongoose.Schema({
     password: { type: String, unique: true }
 });
 
-TestSchema.methods.check = function () {
-    var greeting = this.name
-      ? "Name: " + this.name + " Firstname: " + this.firstname + " Email: " + this.email + " Pwd: " + this.password
-      : "I don't have a name";
-    console.log(greeting);
-}
-
 var Test = mongoose.model('Test', TestSchema);
 
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
+var AccountSchema = new mongoose.Schema({
+    email: String,
+    services: [{
+        name: String,
+        widgets: [{
+            name: String,
+            description: String,
+            params: [{
+                name: String,
+                params_type: String
+            }]
+        }]
+    }]
+});
+
+var Account = mongoose.model('Account', AccountSchema);
+
 db.once('open', function callback () {
+    /*var AccountTest = new Account({
+        email: "louis.beugnon@epitech.eu",
+        services: [{
+            name: "Weather",
+            widgets: [{
+                name: "CityWeather",
+                description: "Give the Weather of a define City.",
+                params: [{
+                    name: "city",
+                    params_type: "string"
+                }]
+            }]
+        }]
+    });
 
-    /*
-    var LouisTest = new Test({
-        name: 'Tronche',
-        email: 'heloise3.tronche@epitech.eu',
-        firstname: 'Héloïse',
-        password: "1234567" });
-
-    LouisTest.save(function (err, LouisTest) {
-        if (err) return console.error(err);
-        LouisTest.check();
+    AccountTest.save(function (err, AccountTest) {
+        if (err) return console.error(err)
     })
-    
-    Test.find(function (err, tes) {
-        if (err) return console.error(err);
-        console.log(tes);
+    Account.find(function (err, res) {
+        if (err) return console.error(err)
+        console.log(res);
     })
-
-    var query = Test.findOne({ 'email': 'louis.beugnon@epitech.eu' });
-
-    query.select('email name firstname password');
-    query.exec(function (err, test) {
-        if (err) console.log(err.code);
-        console.log(test);
-    })
-   */
+    */
 })
 
-app.use('/users', require('../../routes/usersConstroller'));
+/**
+ * 
+ *  DIFFERENT CALL TO THE DATABASE
+ *  USE BY THE PROJECT : DASHBOARD
+ * 
+ */
+
+ 
+if (fs.existsSync('../../userInfos.json')) {
+    var user_log = require('../../userInfos.json');
+    var user_id = user_log._id;
+}
+
+/**
+ * REGISTRATION POST / Call in AuthSignUpPage.js
+ */
+
 
 app.post('/', function(req, res){
     new Test({
@@ -97,6 +125,14 @@ app.post('/', function(req, res){
     })
 })
 
+/**
+ * LOGIN GET / Call in AuthLoginPage.js
+ * 
+ * This call look for a matching email in the DB,
+ * If the user provide a good email, server check password and create a 'userInfos.json' file.
+ *  
+ */
+
 app.get('/', function(req, res){
     Test.find({ email: req.query.email_s }, function (err, tes) {
         if (err) return console.error(err);
@@ -112,7 +148,7 @@ app.get('/', function(req, res){
                         }
                     })
                 }
-                fs.writeFile('../../userInfos.json', JSON.stringify(tes, null, 2), (err) => {
+                fs.writeFile('../../userInfos.json', JSON.stringify(tes[0], null, 2), (err) => {
                     if (err) throw err;
                 })
                 res.send(tes);

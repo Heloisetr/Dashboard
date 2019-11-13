@@ -5,13 +5,10 @@
 }
 
 .Add-container {
-    width: 50%;
+    width: 75%;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 40px;
     background-color: #ffffff;
     min-height: 379px;
 }
-/*
-body {
-    background-color: #DFF2FF;
-}*/

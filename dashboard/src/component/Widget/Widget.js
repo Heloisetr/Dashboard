@@ -10,6 +10,8 @@ const images = {
 
 export default function Widget(props)
 {
+    
+
     const popinfos = (
         <Popover id="Widget-popover">
             <Popover.Title as="h3">Parameters</Popover.Title>
@@ -29,7 +31,7 @@ export default function Widget(props)
                     <OverlayTrigger trigger="click" placement="right" overlay={popinfos}>
                         <Button variant="info" className="Widget-button">Parameters</Button>
                     </OverlayTrigger>
-                    <Button variant="success" className="Widget-button Widget-add">Add</Button>
+                    <Button variant="success" className="Widget-button Widget-add">Add </Button>
                 </div>
             </div>
         </React.Fragment>

@@ -7,7 +7,7 @@ import './ProfilePage.css'
 
 export default function ProfilePage()
 {
-    var userInfos = require('../../about.json');
+    var userInfos = require('../../userInfos.json');
 
     return(
         <React.Fragment>

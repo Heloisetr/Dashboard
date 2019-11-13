@@ -20,8 +20,8 @@ export default withRouter(function AuthLogInPage({history})
         password_s: password
       }
     }).then(resp => {
-      let data = JSON.stringify(resp.data[0], null, 2);
       console.log(resp);
+      history.push('HomePage');
     })
   }
 
@@ -33,6 +33,7 @@ export default withRouter(function AuthLogInPage({history})
           password: password
       };
       let res = setLogin(user);
+      console.log(res);
   }
 
   return (

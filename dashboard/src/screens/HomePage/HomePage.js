@@ -6,6 +6,7 @@ import Footer from '../../component/Footer/Footer'
 import NavBar from '../../component/NavBar/NavBar';
 import Weather from '../../component/Widget/Weather/Weather';
 import Pokedex from '../../component/Widget/Pokedex/Pokedex';
+import NYTimes from '../../component/Widget/NYTimes/NYTimes';
 
 export default withRouter(function HomePage({history}) {
     return (
@@ -13,6 +14,7 @@ export default withRouter(function HomePage({history}) {
             <div className="HomePage">
                 <HeaderAuth/>
                 <NavBar />
+                <NYTimes />
                 <Footer/>
             </div>
         </React.Fragment>  

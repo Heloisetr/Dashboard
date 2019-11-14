@@ -3,7 +3,6 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const fs = require('fs');
-const totoScheme = require('../scheme/toto.json');
 
 const app = express();
 
@@ -153,10 +152,10 @@ app.get('/', function(req, res){
  */
 
 app.post('/widget', function(req, res){
-    new WidgetSchema({
+    new UserWidget({
         email: req.body.new_widget.email,
-        name: req.body.new_user.name,
-        params: req.body.new_user.params
+        name: req.body.new_widget.name,
+        params: req.body.new_widget.params
     }).save(function(err, doc){
         if (err) res.json(err);
         UserWidget.find(function (err, res) {

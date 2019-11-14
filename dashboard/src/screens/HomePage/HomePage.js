@@ -10,8 +10,8 @@ import NYTimes from '../../component/Widget/NYTimes/NYTimes';
 
 export default withRouter(function HomePage({history}) {
     function GetUserWidgets() {
-        var widgets = require('../../temp/userWidget.json');
-
+        //var widgets = require('../../temp/userWidget.json');
+/*
         return (
             <React.Fragment>
                 {widgets.data.map((widget) => {
@@ -26,7 +26,7 @@ export default withRouter(function HomePage({history}) {
                     }
                 })}
             </React.Fragment>
-        )
+        )*/
     }
     return (
         <React.Fragment>

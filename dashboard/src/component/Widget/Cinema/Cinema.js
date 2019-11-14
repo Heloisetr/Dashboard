@@ -3,10 +3,10 @@ import {ProgressBar} from 'react-bootstrap';
 
 import './Cinema.css';
 
-export default function Movie()
+export default function Movie(props)
 {
     const axios = require('axios');
-    const [movie_search, setMovieSearch] = useState("joker");
+    const [movie_search, setMovieSearch] = useState(props.param);
     const [movie_name, setMovieName] = useState("");
     const [movie_snippet, setMovieSnippet] = useState("");
     const [movie_released, setMovieReleased] = useState("");
@@ -44,10 +44,10 @@ export default function Movie()
     )
 }
 
-export function TVShow()
+export function TVShow(props)
 {
     const axios = require('axios');
-    const [tvshow_search, setTvshowSearch] = useState("arrow");
+    const [tvshow_search, setTvshowSearch] = useState(props.param);
     const [tvshow_name, setTvshowName] = useState("");
     const [tvshow_snippet, setTvshowSnippet] = useState("");
     const [tvshow_released, setTvshowReleased] = useState("");

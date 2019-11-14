@@ -3,7 +3,7 @@
         "name": "CityWeather",
         "connection": "none",
         "params": [{
-            "name": "city",
+            "name": "City",
             "type": "string"
         }],
         "badge": "Top rated"
@@ -12,9 +12,36 @@
         "name": "PokemonInfos",
         "connection": "none",
         "params": [{
-            "name": "pokemon name",
+            "name": "Pokemon name",
             "type": "string"
         }],
         "badge": "New"
+    },
+    {
+        "name": "NYTimes",
+        "connection": "none",
+        "params": [{
+            "name": "Topic",
+            "type": "string"
+        }],
+        "badge": "New"
+    },
+    {
+        "name": "MovieSearch",
+        "connection": "none",
+        "params": [{
+            "name": "Movie",
+            "type": "string"
+        }],
+        "badge": "Top rated"
+    },
+    {
+        "name": "TVShowSearch",
+        "connection": "none",
+        "params": [{
+            "name": "TVShow",
+            "type": "string"
+        }],
+        "badge": "Top rated"
     }]
 }

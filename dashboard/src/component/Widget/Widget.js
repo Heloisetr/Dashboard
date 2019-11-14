@@ -10,7 +10,7 @@ const images = {
     "calendar": require("./assets/calendar.png")
 };
 
-export default withRouter(function Widget(props, {history})
+export default withRouter(function Widget(props)
 {
     const axios = require('axios');
     var userInfos = require('../../userInfos.json');
@@ -27,14 +27,6 @@ export default withRouter(function Widget(props, {history})
             console.log("OK", resp);
             handleClose();
         })
-        axios.get('http://localhost:5000/widget', {
-            params:{
-                email_s: new_widget.email
-            }
-        })
-        .then(resp => {
-            history.push('HomePage');
-        })
     }
 
     function submitHandler(event) {
@@ -45,6 +37,7 @@ export default withRouter(function Widget(props, {history})
         };
         let res = addWidget(user_widget);
         console.log(res);
+        props.history.push('HomePage');
     }
 
     const popinfos = (

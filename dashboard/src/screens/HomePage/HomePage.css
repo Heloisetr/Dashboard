@@ -1,0 +1,10 @@
+.HomePage-widget
+{
+    float: left;
+    margin: 20px;
+}
+
+.HomePage-container
+{
+    display: inline-block;
+}

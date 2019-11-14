@@ -17,11 +17,13 @@ export default withRouter(function WidgetAddPage({history}) {
             <React.Fragment>
                 {widgets.data.map((widget) => {
                     return (
-                        <Widget name={widget.name} 
-                                image={widget.image_key} 
-                                params={widget.params[0].name} 
-                                params_type={widget.params[0].type}
-                                badge={widget.badge}/>
+                        <div className="AddPage-widget">
+                            <Widget name={widget.name} 
+                                    image={widget.image_key} 
+                                    params={widget.params[0].name} 
+                                    params_type={widget.params[0].type}
+                                    badge={widget.badge}/>
+                        </div>
                     )
                 })}
             </React.Fragment>

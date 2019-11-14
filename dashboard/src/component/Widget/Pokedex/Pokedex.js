@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import './Pokedex.css';
 
-export default function Pokedex()
+export default function Pokedex(props)
 {
     const axios = require('axios');
-    const [ name, setName] = useState("liepard");
+    const [ name, setName] = useState(props.param);
     const [ height, setHeight] = useState("");
     const [ weight, setWeight] = useState("");
     const [ type, setType] = useState("");

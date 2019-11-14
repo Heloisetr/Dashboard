@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
+import {Button} from 'react-bootstrap';
+
 import './NYTimes.css';
 
 export default function NYTimes({history})
 {
     const axios = require('axios');
-    const [ article_search, setArticleSearch] = useState("election");
+    const [ article_search, setArticleSearch] = useState("north korea");
     const [ article_headline, setArticleHeadLine] = useState("");
     const [ article_snippet, setArticleSnippet] = useState("");
     const [ article_url, setArticleURL] = useState("");
@@ -36,7 +38,7 @@ export default function NYTimes({history})
             <p>{article_snippet}</p>
             <img src={article_image} alt="test"></img>
             <a href={article_url}>
-                <button >Click Here</button>
+                <button type="button" class="btn btn-info btn-sm">Click Here</button>
             </a>
         </div>
     );

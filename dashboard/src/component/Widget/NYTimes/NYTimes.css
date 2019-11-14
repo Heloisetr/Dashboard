@@ -9,8 +9,19 @@
 .NYTimes_container h1
 {
     text-align: center;
-    text-align: justify;
     padding-top: 10px;
+}
+
+.NYTimes_container h2
+{
+    text-align: justify;
+    padding : 0 20px 0 20px;
+}
+
+.NYTimes_container p
+{
+    padding : 0 20px 0 20px;
+    text-align: justify;
 }
 
 .NYTimes_container img
@@ -21,4 +32,10 @@
     margin-left: auto;
     margin-right: auto;
     width: 70%;
+}
+
+.NYTimes_container button
+{
+    margin-top: 30px;
+    margin-left: 40%;
 }

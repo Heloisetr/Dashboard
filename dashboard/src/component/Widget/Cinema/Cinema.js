@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {ProgressBar} from 'react-bootstrap';
 
 import './Cinema.css';
 
@@ -10,7 +11,6 @@ export default function Movie()
     const [movie_snippet, setMovieSnippet] = useState("");
     const [movie_released, setMovieReleased] = useState("");
     const [movie_average, setMovieAverage] = useState("");
-    const [movie_picture, setMoviePicture] = useState("");
 
     async function setCinema(movie_search)
     {
@@ -26,11 +26,20 @@ export default function Movie()
     setCinema(movie_search);
 
     return (
-        <div> 
-            <p>{movie_name}</p>
-            <p>{movie_snippet}</p>
-            <p>{movie_released}</p>
-            <p>{movie_average}</p>
+        <div className="Movie_container">
+            <h1>
+                Movie
+            </h1> 
+            <hr></hr>
+            <div className="Title">
+                <h2>{movie_name}</h2>
+            </div>
+            <p className="date">{movie_released}</p><br/>
+            <p className="resume">{movie_snippet}</p>
+            <div className="viewers">
+                <p><strong>Viewers Score</strong></p>
+                <ProgressBar now={movie_average} label={`${movie_average}%`} />
+            </div>
         </div>
     )
 }
@@ -38,10 +47,40 @@ export default function Movie()
 export function TVShow()
 {
     const axios = require('axios');
-    //const []
-    return (
-        <div>
+    const [tvshow_search, setTvshowSearch] = useState("arrow");
+    const [tvshow_name, setTvshowName] = useState("");
+    const [tvshow_snippet, setTvshowSnippet] = useState("");
+    const [tvshow_released, setTvshowReleased] = useState("");
+    const [tvshow_average, setTvshowAverage] = useState("");
 
+    async function setTvShow(tvshow_search)
+    {
+        await axios.get(`https://api.themoviedb.org/3/search/tv?api_key=3281ecc6259127ad1d57d693304f646f&query=${tvshow_search}`)
+        .then(resp => {
+            console.log("OK", resp);
+            setTvshowName(resp.data.results[0].name);
+            setTvshowSnippet(resp.data.results[0].overview);
+            setTvshowReleased(resp.data.results[0].first_air_date);
+            setTvshowAverage(10 * resp.data.results[0].vote_average);
+        })
+    }
+    setTvShow(tvshow_search);
+
+    return (
+        <div className="TvShow_container">
+            <h1>
+                TV Show
+            </h1> 
+            <hr></hr>
+            <div className="Title">
+                <h2>{tvshow_name}</h2>
+            </div>
+            <p className="date">{tvshow_released}</p><br/>
+            <p className="resume">{tvshow_snippet}</p>
+            <div className="viewers">
+                <p><strong>Viewers Score</strong></p>
+                <ProgressBar now={tvshow_average} label={`${tvshow_average}%`} />
+            </div>
         </div>
     )
 }

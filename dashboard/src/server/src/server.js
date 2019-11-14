@@ -155,7 +155,7 @@ app.post('/widget', function(req, res){
     new UserWidget({
         email: req.body.new_widget.email,
         name: req.body.new_widget.name,
-        params: req.body.new_widget.params
+        params: req.body.new_widget.param
     }).save(function(err, doc){
         if (err) res.json(err);
         UserWidget.find(function (err, res) {
@@ -182,7 +182,7 @@ app.get('/widget', function(req, res){
                 }
             })
         }
-        fs.writeFile('../../temp/userWidget.json', JSON.stringify(tes[0], null, 2), (err) => {
+        fs.writeFile('../../temp/userWidget.json', JSON.stringify(tes, null, 2), (err) => {
             if (err) throw err;
         })
         res.send(tes);

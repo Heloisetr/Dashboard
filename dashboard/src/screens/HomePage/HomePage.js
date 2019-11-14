@@ -9,14 +9,33 @@ import Pokedex from '../../component/Widget/Pokedex/Pokedex';
 import NYTimes from '../../component/Widget/NYTimes/NYTimes';
 
 export default withRouter(function HomePage({history}) {
+    function GetUserWidgets() {
+        var widgets = require('../../temp/userWidget.json');
+
+        return (
+            <React.Fragment>
+                {widgets.data.map((widget) => {
+                    if (widget.name == "CityWeather") {
+                        return (
+                            <Weather/>
+                        )
+                    } else if (widget.name == "Pokedex") {
+                        return (
+                            <Pokedex/>
+                        )
+                    }
+                })}
+            </React.Fragment>
+        )
+    }
     return (
         <React.Fragment>
             <div className="HomePage">
                 <HeaderAuth/>
                 <NavBar />
-                <NYTimes />
+                {GetUserWidgets()}
                 <Footer/>
             </div>
-        </React.Fragment>  
+        </React.Fragment>
     );
 })

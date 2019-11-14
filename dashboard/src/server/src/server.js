@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const fs = require('fs');
+const totoScheme = require('../scheme/toto.json');
 
 const app = express();
 
@@ -66,30 +67,16 @@ var AccountSchema = new mongoose.Schema({
 
 var Account = mongoose.model('Account', AccountSchema);
 
-db.once('open', function callback () {
-    /*var AccountTest = new Account({
-        email: "louis.beugnon@epitech.eu",
-        services: [{
-            name: "Weather",
-            widgets: [{
-                name: "CityWeather",
-                description: "Give the Weather of a define City.",
-                params: [{
-                    name: "city",
-                    params_type: "string"
-                }]
-            }]
-        }]
-    });
+var WidgetSchema = new mongoose.Schema({
+    email: String,
+    name: String,
+    params: String
+});
 
-    AccountTest.save(function (err, AccountTest) {
-        if (err) return console.error(err)
-    })
-    Account.find(function (err, res) {
-        if (err) return console.error(err)
-        console.log(res);
-    })
-    */
+var UserWidget = mongoose.model('UserWidget', WidgetSchema);
+
+db.once('open', function callback () {
+    
 })
 
 /**
@@ -156,6 +143,50 @@ app.get('/', function(req, res){
                 res.send("Wrong password")
             }
         }
+    })
+})
+
+/**
+ * WIDGET REGISTRATION POST / Call in Widget.js
+ * 
+ * This call create a new Widget in DB
+ */
+
+app.post('/widget', function(req, res){
+    new WidgetSchema({
+        email: req.body.new_widget.email,
+        name: req.body.new_user.name,
+        params: req.body.new_user.params
+    }).save(function(err, doc){
+        if (err) res.json(err);
+        UserWidget.find(function (err, res) {
+            if (err) return console.error(err);
+            console.log(res);
+        })
+    })
+})
+
+/**
+ * WIDGET GET WITH EMAIL / Call in Widget.js
+ * 
+ * This get all widget for a user.
+ */
+
+app.get('/widget', function(req, res){
+    UserWidget.find({ email: req.query.email_s }, function(err, tes) {
+        if (err) return console.error(err);
+        if (fs.existsSync('../../temp/userWidget.json')) {
+            fs.unlink('../../temp/userWidget.json', (err) => {
+                if (err) {
+                    console.error(err)
+                    return
+                }
+            })
+        }
+        fs.writeFile('../../temp/userWidget.json', JSON.stringify(tes[0], null, 2), (err) => {
+            if (err) throw err;
+        })
+        res.send(tes);
     })
 })
 

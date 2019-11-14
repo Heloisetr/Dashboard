@@ -7,7 +7,7 @@ import NavBar from '../../component/NavBar/NavBar';
 import Weather from '../../component/Widget/Weather/Weather';
 import Pokedex from '../../component/Widget/Pokedex/Pokedex';
 import NYTimes from '../../component/Widget/NYTimes/NYTimes';
-import Cinema from '../../component/Widget/Cinema/Cinema';
+import Movie, { TVShow } from '../../component/Widget/Cinema/Cinema';
 import Widget from '../../component/Widget/Widget';
 
 export default withRouter(function HomePage({history}) {
@@ -48,13 +48,13 @@ export default withRouter(function HomePage({history}) {
                         } else if (widget.name == "MovieSearch") {
                             return (
                                 <div className="HomePage-widget">
-                                    <Cinema param={widget.params}/>
+                                    <Movie param={widget.params}/>
                                 </div>
                             )
                         } else if (widget.name == "TVShowSearch") {
                             return (
                                 <div className="HomePage-widget">
-                                    <Cinema param={widget.params}/>
+                                    <TVShow param={widget.params}/>
                                 </div>
                             )
                         } 

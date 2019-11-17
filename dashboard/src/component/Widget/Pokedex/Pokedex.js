@@ -17,7 +17,7 @@ export default function Pokedex(props)
             setHeight(resp.data.height);
             setWeight(resp.data.weight);
             setType(resp.data.types[0].type.name);
-            setImage(resp.data.sprites.back_default);
+            setImage(resp.data.sprites.front_default);
         })
     }
     setPokedex(name);

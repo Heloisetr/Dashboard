@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {HeaderAuth} from '../../component/Header/Header';
 import Footer from '../../component/Footer/Footer'
 import {withRouter} from 'react-router-dom';
+import GoogleLog from '../../component/GoogleLog/GoogleLog.js';
 import './AuthSignUpPage.css';
 
 
@@ -15,10 +16,10 @@ export default withRouter(function AuthSignUpPage({history})
     const [ password, setPassword ] = useState("");
 
     async function setRegister(new_user) {
-        axios.post('http://localhost:5000/', {new_user})
+        axios.post('http://localhost:8080/', {new_user})
         .then(resp => {
             console.log ("OK", resp);
-            history.push('HomePage');
+            history.push('widget-handling');
         })
     }
 
@@ -43,8 +44,9 @@ export default withRouter(function AuthSignUpPage({history})
                     <input type="text" name="name" placeholder="Name" onChange={e => setName(e.target.value)} required/><br/>
                     <input type="text" name="firstname" placeholder="Firstname" onChange={e => setFirstname(e.target.value)} required/><br/>
                     <input type="email" name="email" placeholder="Email" onChange={e => setEmail(e.target.value)} required/><br/>
-                    <input type="password" name="pwd" placeholder="Password" onChange={e => setPassword(e.target.value)} required/><br/>
-                    <input type="submit" value="Sign Up" name="submit"/>   
+                    <input type="password" name="pwd" placeholder="Password" onChange={e => setPassword(e.target.value)} required/><br/><br/>
+                    <GoogleLog/>
+                    <input type="submit" value="Sign Up" name="submit"/>
                 </form>
             </div>  
             <Footer />

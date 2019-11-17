@@ -20,6 +20,7 @@ export default withRouter(function WidgetAddPage({history}) {
                         <div className="AddPage-widget">
                             <Widget name={widget.name} 
                                     image={widget.image_key} 
+                                    connection={widget.connection}
                                     params={widget.params[0].name} 
                                     params_type={widget.params[0].type}
                                     badge={widget.badge}/>

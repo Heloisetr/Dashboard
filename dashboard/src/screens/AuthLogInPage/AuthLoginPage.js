@@ -14,14 +14,18 @@ export default withRouter(function AuthLogInPage({history})
 
   function setLogin(user) {
 
-    axios.get('http://localhost:5000/', {
+    axios.get('http://localhost:8080/', {
       params:{
         email_s: email,
         password_s: password
       }
     }).then(resp => {
-      console.log(resp);
-      history.push('HomePage');
+      console.log(resp.data);
+      if (resp.data === "Null") {
+        history.push('AuthSignUpPage');
+      } else {
+        history.push('widget-handling');
+      }
     })
   }
 
@@ -40,14 +44,16 @@ export default withRouter(function AuthLogInPage({history})
     <React.Fragment>
     <div className="App">
       <HeaderAuth/>
-      <div className="App_Body_Forms">
-          <form onSubmit={submitHandler}>
-              <h3>Log In to your account</h3>
-              <input type="email" name="email" placeholder="Email" onChange={e => setEmail(e.target.value)} required/><br/>
-              <input type="password" name="pwd" placeholder="Password" onChange={e => setPassword(e.target.value)} required/><br/>
-              <input type="submit" value="Log In" name="submit"/>   
-              <p>Need an account ? <button onClick={() => history.push('/AuthSignUpPage')}>Sign up</button></p>
-          </form>
+      <div className="App_Body_container">
+        <div className="App_Body_Forms">
+            <form onSubmit={submitHandler}>
+                <h3>Log In to your account</h3>
+                <input type="email" name="email" placeholder="Email" onChange={e => setEmail(e.target.value)} required/><br/>
+                <input type="password" name="pwd" placeholder="Password" onChange={e => setPassword(e.target.value)} required/><br/>
+                <input type="submit" value="Log In" name="submit"/>   
+            </form>
+            <p>Need an account ? <button onClick={() => history.push('/AuthSignUpPage')}>Sign up</button></p>
+        </div>
       </div>
       <Footer/>
     </div>

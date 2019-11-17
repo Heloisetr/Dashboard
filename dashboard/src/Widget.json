@@ -15,13 +15,22 @@
             "name": "Pokemon name",
             "type": "string"
         }],
-        "badge": "New"
+        "badge": "Geek"
     },
     {
         "name": "NYTimes",
-        "connection": "none",
+        "connection": "Facebook",
         "params": [{
             "name": "Topic",
+            "type": "string"
+        }],
+        "badge": "New"
+    },
+    {
+        "name": "NYBooks",
+        "connection": "Facebook",
+        "params": [{
+            "name": "Writter",
             "type": "string"
         }],
         "badge": "New"
@@ -43,5 +52,14 @@
             "type": "string"
         }],
         "badge": "Top rated"
+    },
+    {
+        "name": "ViewCounter",
+        "connection": "Youtube",
+        "params": [{
+            "name": "Channel",
+            "type": "string"
+        }],
+        "badge": "Youtube"
     }]
 }

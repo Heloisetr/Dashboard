@@ -1,4 +1,9 @@
 
+.App_Body_container
+{
+    display: inline-block;
+}
+
 .App_Body_Forms
 {
     width: 400px;
@@ -6,8 +11,10 @@
     border-radius: 5px;
     background-color: #f2f2f2;
     text-align: center;
-    margin-left: 770px;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 80px;
+    margin-bottom: 20px;
 }
 
 .App_Body_Forms form

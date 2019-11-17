@@ -8,14 +8,17 @@ import Weather from '../../component/Widget/Weather/Weather';
 import Pokedex from '../../component/Widget/Pokedex/Pokedex';
 import NYTimes from '../../component/Widget/NYTimes/NYTimes';
 import Movie, { TVShow } from '../../component/Widget/Cinema/Cinema';
-import Widget from '../../component/Widget/Widget';
+import Youtube from '../../component/Widget/Youtube/Youtube.js';
+import NYBooks from '../../component/Widget/NYBooks/NYBooks.js';
 
 export default withRouter(function HomePage({history}) {
+
     function GetUserWidgets() {
+
         const axios = require('axios');
         var userInfos = require('../../userInfos.json');
 
-        axios.get('http://localhost:5000/widget', {
+        axios.get('http://localhost:8080/widget', {
             params:{
                 email_s: userInfos.email
             }
@@ -27,41 +30,54 @@ export default withRouter(function HomePage({history}) {
         return (
             <React.Fragment>
                     {widgets.map((widget) => {
-                        if (widget.name == "CityWeather") {
+                        if (widget.name === "CityWeather") {
                             return (
                                 <div className="HomePage-widget">
                                     <Weather param={widget.params}/>
                                 </div>
                             )
-                        } else if (widget.name == "PokemonInfos") {
+                        } else if (widget.name === "PokemonInfos") {
                             return (
                                 <div className="HomePage-widget">
                                     <Pokedex param={widget.params}/>
                                 </div>
                             )
-                        } else if (widget.name == "NYTimes") {
+                        } else if (widget.name === "NYTimes") {
                             return (
                                 <div className="HomePage-widget">
                                     <NYTimes param={widget.params}/>
                                 </div>
                             )
-                        } else if (widget.name == "MovieSearch") {
+                        } else if (widget.name === "MovieSearch") {
                             return (
                                 <div className="HomePage-widget">
                                     <Movie param={widget.params}/>
                                 </div>
                             )
-                        } else if (widget.name == "TVShowSearch") {
+                        } else if (widget.name === "TVShowSearch") {
                             return (
                                 <div className="HomePage-widget">
                                     <TVShow param={widget.params}/>
                                 </div>
                             )
-                        } 
+                        } else if (widget.name === "ViewCounter") {
+                            return (
+                                <div className="HomePage-widget">
+                                    <Youtube param={widget.params}/>
+                                </div>
+                            )
+                        } else if (widget.name === "NYBooks") {
+                            return (
+                                <div className="HomePage-widget">
+                                    <NYBooks param={widget.params}/>
+                                </div>
+                            )
+                        }
                     })}
             </React.Fragment>
         )
     }
+
     return (
         <React.Fragment>
             <div className="HomePage">

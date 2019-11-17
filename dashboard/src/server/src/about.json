@@ -1,0 +1,66 @@
+{
+    "server": {
+        "current_time": 123455,
+        "services": [{
+            "name": "weather",
+            "widgets": [{
+                "name": "CityWeather",
+                "description": "Display temperature and humidity percentage of a provided city",
+                "params": [{
+                    "name": "City",
+                    "type": "string"
+                }]
+            }]
+        }, {
+            "name": "Pokedex",
+            "widgets": [{
+                "name": "PokemonInfos",
+                "description": "Display informations about a provided Pokemon",
+                "params": [{
+                    "name": "Name of the Pokemon",
+                    "type": "string"
+                }]
+            }]
+        }, {
+            "name": "NYTimes Daily",
+            "widgets": [{
+                "name": "NYTimes",
+                "description": "Display the last news about a provided subject",
+                "params": [{
+                    "name": "Topic",
+                    "type": "string"
+                }]
+            }]
+        }, {
+            "name": "Movie Check",
+            "widgets": [{
+                "name": "MovieSearch",
+                "description": "Display informations about a provided Movie",
+                "params": [{
+                    "name": "Movie name",
+                    "type": "string"
+                }]
+            }]
+        }, {
+            "name": "TV Show Check",
+            "widgets": [{
+                "name": "TVShowSearch",
+                "description": "Display informations about a provided TV Show",
+                "params": [{
+                    "name": "TV Show name",
+                    "type": "string"
+                }]
+            }]
+        }, {
+            "name": "Youtube",
+            "widgets": [{
+                "name": "ViewCounter",
+                "description": "Display number of view for a given Youtube channel",
+                "params": [{
+                    "name": "Channel name",
+                    "type": "string"
+                }]
+            }]
+        }]
+    }
+}

@@ -3,10 +3,12 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const fs = require('fs');
+//const authorize = require('./youtube_server');
+//const ytbcheck = require('./youtube_sev');
 
 const app = express();
 
-const port = 5000;
+const port = 8080;
 
 mongoose.Promise = global.Promise;
 
@@ -34,11 +36,6 @@ app.use(cors());
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
-
-app.use('/users', require('../../routes/usersConstroller'));
-
-
-
 
 var TestSchema = new mongoose.Schema({
     name: String,
@@ -122,8 +119,8 @@ app.post('/', function(req, res){
 app.get('/', function(req, res){
     Test.find({ email: req.query.email_s }, function (err, tes) {
         if (err) return console.error(err);
-        if (tes == []) {
-            res.send("This email doesn't exist !")
+        if (tes.length < 1) {
+            res.send("Null");
         } else {
             if(tes[0].password == req.query.password_s) {
                 if (fs.existsSync('../../userInfos.json')) {
@@ -166,7 +163,7 @@ app.post('/widget', function(req, res){
 })
 
 /**
- * WIDGET GET WITH EMAIL / Call in Widget.js
+ * WIDGET GET WITH EMAIL / Call in HomePage.js
  * 
  * This get all widget for a user.
  */
@@ -188,5 +185,63 @@ app.get('/widget', function(req, res){
         res.send(tes);
     })
 })
+
+/**
+ * YOUTUBE
+ */
+
+// Load client secrets from a local file.
+/*
+app.get('/youtube', function(req, res){
+    fs.readFile('client_secret.json', function processClientSecrets(err, content) {
+        if (err) {
+            console.log('Error loading client secret file: ' + err);
+            return;
+        }
+        // Authorize a client with the loaded credentials, then call the YouTube API.
+        var auth = authorize.authorize(JSON.parse(content), authorize.getChannel);
+        res.send(auth);
+    });
+})
+
+app.post('/youtube', function(req, res){
+    authorize.storeToken(req.body.token);
+})
+
+app.get('/youtube/channels', function(req, res){
+    fs.readFile('client_secret.json', function processClientSecrets(err, content) {
+        if (err) {
+            console.log('Error loading client secret file: ' + err);
+            return;
+        }
+        // Authorize a client with the loaded credentials, then call the YouTube API.
+        var channels = ytbcheck.authorize(JSON.parse(content));
+        res.send(channels);
+    });
+})
+*/
+
+/**
+ * 
+ * ABOUT.JSON
+ * 
+ */
+
+ app.get('/about.json', function(req, res){
+    var ip = require("ip");
+    var test = {
+        "client": {
+            "host": ip.address()
+        },
+        "server": {
+            "current_time": new Date().getTime(),
+            "services": ""
+        }
+    }
+    var about = require('./about.json');
+    test.server.services = about.server.services;
+    res.send(test);
+ })
+
 
 module.exports = server;

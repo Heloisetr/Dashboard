@@ -29,46 +29,46 @@ export default withRouter(function HomePage({history}) {
 
         return (
             <React.Fragment>
-                    {widgets.map((widget) => {
+                    {widgets.map((widget, index) => {
                         if (widget.name === "CityWeather") {
                             return (
-                                <div className="HomePage-widget">
+                                <div key={index} className="HomePage-widget">
                                     <Weather param={widget.params}/>
                                 </div>
                             )
                         } else if (widget.name === "PokemonInfos") {
                             return (
-                                <div className="HomePage-widget">
+                                <div key={index} className="HomePage-widget">
                                     <Pokedex param={widget.params}/>
                                 </div>
                             )
                         } else if (widget.name === "NYTimes") {
                             return (
-                                <div className="HomePage-widget">
+                                <div key={index} className="HomePage-widget">
                                     <NYTimes param={widget.params}/>
                                 </div>
                             )
                         } else if (widget.name === "MovieSearch") {
                             return (
-                                <div className="HomePage-widget">
+                                <div key={index} className="HomePage-widget">
                                     <Movie param={widget.params}/>
                                 </div>
                             )
                         } else if (widget.name === "TVShowSearch") {
                             return (
-                                <div className="HomePage-widget">
+                                <div key={index} className="HomePage-widget">
                                     <TVShow param={widget.params}/>
                                 </div>
                             )
                         } else if (widget.name === "ViewCounter") {
                             return (
-                                <div className="HomePage-widget">
+                                <div key={index} className="HomePage-widget">
                                     <Youtube param={widget.params}/>
                                 </div>
                             )
                         } else if (widget.name === "NYBooks") {
                             return (
-                                <div className="HomePage-widget">
+                                <div key={index} className="HomePage-widget">
                                     <NYBooks param={widget.params}/>
                                 </div>
                             )

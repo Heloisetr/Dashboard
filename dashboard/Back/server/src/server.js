@@ -83,8 +83,8 @@ db.once('open', function callback () {
  */
 
  
-if (fs.existsSync('../../userInfos.json')) {
-    var user_log = require('../../userInfos.json');
+if (fs.existsSync('../../../src/userInfos.json')) {
+    var user_log = require('../../../src/userInfos.json');
     var user_id = user_log._id;
 }
 
@@ -123,15 +123,26 @@ app.get('/', function(req, res){
             res.send("Null");
         } else {
             if(tes[0].password == req.query.password_s) {
-                if (fs.existsSync('../../userInfos.json')) {
-                    fs.unlink('../../userInfos.json', (err) => {
+                if (fs.existsSync('../../../App/src/userInfos.json')) {
+                    fs.unlink('../../../App/src/userInfos.json', (err) => {
                         if (err) {
                             console.error(err)
                             return
                         }
                     })
                 }
-                fs.writeFile('../../userInfos.json', JSON.stringify(tes[0], null, 2), (err) => {
+                fs.writeFile('../../../App/src/userInfos.json', JSON.stringify(tes[0], null, 2), (err) => {
+                    if (err) throw err;
+                })
+                if (fs.existsSync('../temp/userInfos.json')) {
+                    fs.unlink('../temp/userInfos.json', (err) => {
+                        if (err) {
+                            console.error(err)
+                            return
+                        }
+                    })
+                }
+                fs.writeFile('../temp/userInfos.json', JSON.stringify(tes[0], null, 2), (err) => {
                     if (err) throw err;
                 })
                 res.send(tes);
@@ -171,15 +182,26 @@ app.post('/widget', function(req, res){
 app.get('/widget', function(req, res){
     UserWidget.find({ email: req.query.email_s }, function(err, tes) {
         if (err) return console.error(err);
-        if (fs.existsSync('../../temp/userWidget.json')) {
-            fs.unlink('../../temp/userWidget.json', (err) => {
+        if (fs.existsSync('../../../App/src/temp/userWidget.json')) {
+            fs.unlink('../../../App/src/temp/userWidget.json', (err) => {
                 if (err) {
                     console.error(err)
                     return
                 }
             })
         }
-        fs.writeFile('../../temp/userWidget.json', JSON.stringify(tes, null, 2), (err) => {
+        fs.writeFile('../../../App/src/temp/userWidget.json', JSON.stringify(tes, null, 2), (err) => {
+            if (err) throw err;
+        })
+        if (fs.existsSync('../temp/userWidget.json')) {
+            fs.unlink('../temp/userWidget.json', (err) => {
+                if (err) {
+                    console.error(err)
+                    return
+                }
+            })
+        }
+        fs.writeFile('../temp/userWidget.json', JSON.stringify(tes, null, 2), (err) => {
             if (err) throw err;
         })
         res.send(tes);

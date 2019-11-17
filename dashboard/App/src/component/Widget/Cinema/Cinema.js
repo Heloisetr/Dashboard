@@ -6,7 +6,7 @@ import './Cinema.css';
 export default function Movie(props)
 {
     const axios = require('axios');
-    const [movie_search, setMovieSearch] = useState(props.param);
+    const movie_search = props.param;
     const [movie_name, setMovieName] = useState("");
     const [movie_snippet, setMovieSnippet] = useState("");
     const [movie_released, setMovieReleased] = useState("");
@@ -14,14 +14,17 @@ export default function Movie(props)
 
     async function setCinema(movie_search)
     {
-        await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=3281ecc6259127ad1d57d693304f646f&query=${movie_search}`)
-        .then(resp => {
-            console.log("OK", resp);
-            setMovieName(resp.data.results[0].title);
-            setMovieSnippet(resp.data.results[0].overview);
-            setMovieReleased(resp.data.results[0].release_date);
-            setMovieAverage(10 * resp.data.results[0].vote_average);
-        })
+        if (movie_name !== "") {
+            return ("ok");
+        } else {
+            await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=3281ecc6259127ad1d57d693304f646f&query=${movie_search}`)
+            .then(resp => {
+                setMovieName(resp.data.results[0].title);
+                setMovieSnippet(resp.data.results[0].overview);
+                setMovieReleased(resp.data.results[0].release_date);
+                setMovieAverage(10 * resp.data.results[0].vote_average);
+            })
+        }
     }
     setCinema(movie_search);
 
@@ -47,7 +50,7 @@ export default function Movie(props)
 export function TVShow(props)
 {
     const axios = require('axios');
-    const [tvshow_search, setTvshowSearch] = useState(props.param);
+    const tvshow_search = props.param;
     const [tvshow_name, setTvshowName] = useState("");
     const [tvshow_snippet, setTvshowSnippet] = useState("");
     const [tvshow_released, setTvshowReleased] = useState("");
@@ -55,14 +58,17 @@ export function TVShow(props)
 
     async function setTvShow(tvshow_search)
     {
-        await axios.get(`https://api.themoviedb.org/3/search/tv?api_key=3281ecc6259127ad1d57d693304f646f&query=${tvshow_search}`)
-        .then(resp => {
-            console.log("OK", resp);
-            setTvshowName(resp.data.results[0].name);
-            setTvshowSnippet(resp.data.results[0].overview);
-            setTvshowReleased(resp.data.results[0].first_air_date);
-            setTvshowAverage(10 * resp.data.results[0].vote_average);
-        })
+        if (tvshow_name !== "") {
+            return("ok");
+        } else {
+            await axios.get(`https://api.themoviedb.org/3/search/tv?api_key=3281ecc6259127ad1d57d693304f646f&query=${tvshow_search}`)
+            .then(resp => {
+                setTvshowName(resp.data.results[0].name);
+                setTvshowSnippet(resp.data.results[0].overview);
+                setTvshowReleased(resp.data.results[0].first_air_date);
+                setTvshowAverage(10 * resp.data.results[0].vote_average);
+            })
+        }
     }
     setTvShow(tvshow_search);
 

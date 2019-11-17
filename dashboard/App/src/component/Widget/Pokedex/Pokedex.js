@@ -4,21 +4,24 @@ import './Pokedex.css';
 export default function Pokedex(props)
 {
     const axios = require('axios');
-    const [ name, setName] = useState(props.param);
+    const name = props.param;
     const [ height, setHeight] = useState("");
     const [ weight, setWeight] = useState("");
     const [ type, setType] = useState("");
     const [ image, setImage] = useState("");
 
     async function setPokedex(name) {
-        await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
-        .then(resp => {
-            console.log("OK", resp);
-            setHeight(resp.data.height);
-            setWeight(resp.data.weight);
-            setType(resp.data.types[0].type.name);
-            setImage(resp.data.sprites.front_default);
-        })
+        if (height !== "") {
+            return ("ok");
+        } else {
+            await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
+            .then(resp => {
+                setHeight(resp.data.height);
+                setWeight(resp.data.weight);
+                setType(resp.data.types[0].type.name);
+                setImage(resp.data.sprites.front_default);
+            })
+        }
     }
     setPokedex(name);
 

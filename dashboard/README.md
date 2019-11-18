@@ -37,6 +37,39 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
+## Services
+
+### Weather
+
+The weather widget permits to display the weather forecast of the city that you wish to know.
+
+You have to insert the city that you want when you add the widget to the Home Page.
+
+### Pokedex
+
+The Pokedex widget permits to display the caracteristics of the pokemon that you wish to see.
+
+You have to insert the pokemon's name that you want when you add the widget to the Home Page.
+
+### NY Times
+
+The NY Times widget permits to display the newspaper article that you wish to see.
+
+You have to insert the article that you want when you add the widget to the Home Page.
+
+### Cinema
+### The Movie widget
+
+The movie widget permits to display all the information of the movie that you wish to see.
+
+You have to insert the name of the movie that you want when you add the widget to the Home Page.
+### The TVShow widget
+
+The TVShow widget permits to display all the information of the TVShow that you wish to see.
+
+You have to insert the name of the TVShow that you want when you add the widget to the Home Page.
+
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
@@ -45,7 +78,7 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 ### Code Splitting
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+This section has moved here: https://facebook.github.io/create-react-app/docs/code-splittings
 
 ### Analyzing the Bundle Size
 
